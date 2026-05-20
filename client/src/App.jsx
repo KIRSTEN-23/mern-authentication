@@ -3,111 +3,45 @@
 //--------------------------------------------------------------------------------------------------------------
 
 import { useState } from "react";
-import axios from "axios";
+
+import Register from "./pages/register.jsx";
+import Login from "./pages/login.jsx";
+import Dashboard from "./pages/dashboard.jsx";
+
+import { Button, Container } from "react-bootstrap";
 
 function App() {
+  const [activeTab, setActiveTab] = useState("login");
 
-  const [name, setName] = useState("");
+  const token = localStorage.getItem("token");
 
-  const [email, setEmail] = useState("");
-
-  const [password, setPassword] = useState("");
-
-  const [message, setMessage] = useState("");
-
-
-  const handleSubmit = async (event) => {
-
-    event.preventDefault();
-
-    try {
-
-      const response = await axios.post(
-        "http://localhost:5000/api/users/register",
-        {
-          name,
-          email,
-          password,
-        }
-      );
-
-      setMessage("User created successfully!");
-
-      console.log(response.data);
-
-    } catch (error) {
-
-      setMessage("Error creating user.");
-
-      console.log(error);
-
-    }
-
-  };
-
+  if (token) {
+    return <Dashboard />;
+  }
 
   return (
+    <Container className="py-5">
+      <div className="d-flex justify-content-center gap-2 mb-4">
+        <Button
+          variant={activeTab === "login" ? "dark" : "outline-dark"}
+          onClick={() => setActiveTab("login")}
+        >
+          Login
+        </Button>
 
-    <div style={{ padding: "20px" }}>
+        <Button
+          variant={activeTab === "register" ? "dark" : "outline-dark"}
+          onClick={() => setActiveTab("register")}
+        >
+          Register
+        </Button>
+      </div>
 
-      <h1>Create User</h1>
+      {activeTab === "login" && <Login />}
 
-      <form onSubmit={handleSubmit}>
-
-        <div>
-
-          <label>Name:</label>
-
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-
-        </div>
-
-        <br />
-
-        <div>
-
-          <label>Email:</label>
-
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-        </div>
-
-        <br />
-
-        <div>
-
-          <label>Password:</label>
-
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-        </div>
-
-        <br />
-
-        <button type="submit">
-          Create User
-        </button>
-
-      </form>
-
-      {message && <p>{message}</p>}
-
-    </div>
-
+      {activeTab === "register" && <Register />}
+    </Container>
   );
-
 }
 
 export default App;
