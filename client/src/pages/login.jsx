@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { Alert, Button, Card, Container, Form } from "react-bootstrap";
+import { Alert, Button, Form } from "react-bootstrap";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -57,17 +57,15 @@ function Login() {
   };
 
   return (
-    <Container className="py-5">
-      <Card className="mx-auto shadow" style={{ maxWidth: "650px" }}>
-        <Card.Body>
-          <h2 className="mb-2">Butler’s Access Code Login</h2>
-          <p className="text-muted">
-            Recreate your saved suite setup to unlock your account.
-          </p>
+    <>
+      <h2 className="mb-2">Butler's Access Code Login</h2>
+      <p className="text-muted">
+        Recreate your saved suite setup to unlock your account.
+      </p>
 
-          {error && <Alert variant="danger">{error}</Alert>}
+      {error && <Alert variant="danger">{error}</Alert>}
 
-          <Form onSubmit={handleLogin}>
+      <Form onSubmit={handleLogin}>
             <Form.Group className="mb-3">
               <Form.Label>Username</Form.Label>
               <Form.Control
@@ -202,9 +200,7 @@ function Login() {
               Login
             </Button>
           </Form>
-        </Card.Body>
-      </Card>
-    </Container>
+    </>
   );
 }
 

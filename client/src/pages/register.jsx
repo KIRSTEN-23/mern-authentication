@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Alert, Button, Card, Container, Form } from 'react-bootstrap';
+import { Alert, Button, Form } from 'react-bootstrap';
 
 function Register() {
   const [username, setUsername] = useState('');
@@ -55,18 +55,16 @@ function Register() {
   };
 
   return (
-    <Container className="py-5">
-      <Card className="mx-auto shadow" style={{ maxWidth: '650px' }}>
-        <Card.Body>
-          <h2 className="mb-2">Create Your Butler’s Access Code</h2>
-          <p className="text-muted">
-            Set up your private luxury suite combination. You will recreate this during login.
-          </p>
+    <>
+      <h2 className="mb-2">Create Your Butler's Access Code</h2>
+      <p className="text-muted">
+        Set up your private luxury suite combination. You will recreate this during login.
+      </p>
 
-          {message && <Alert variant="success">{message}</Alert>}
-          {error && <Alert variant="danger">{error}</Alert>}
+      {message && <Alert variant="success">{message}</Alert>}
+      {error && <Alert variant="danger">{error}</Alert>}
 
-          <Form onSubmit={handleRegister}>
+      <Form onSubmit={handleRegister}>
             <Form.Group className="mb-3">
               <Form.Label>Username</Form.Label>
               <Form.Control
@@ -102,21 +100,127 @@ function Register() {
 
             <h5>Suite Setup</h5>
 
-            <Form.Group className="mb-3">
-              <Form.Label>Lighting</Form.Label>
-              <Form.Select
-                required
-                value={lighting}
-                onChange={(event) => {
-                  setLighting(event.target.value);
-                  addInteraction('lighting');
-                }}
-              >
-                <option value="">Choose lighting</option>
-                <option value="warm">Warm lighting</option>
-                <option value="gold">Gold lighting</option>
-                <option value="dim">Dim lighting</option>
-              </Form.Select>
+  {/* ---------------------------------------------------------------- */}
+  {/* LIGHTING IMAGE SELECTOR                                           */}
+  {/* ---------------------------------------------------------------- */}
+
+            <Form.Group className="mb-4">
+
+              {/* Section label */}
+              <Form.Label>
+                Lighting
+              </Form.Label>
+
+
+              {/* 
+                Container holding all lighting options
+
+                d-flex      = puts cards next to each other
+                gap-4       = spacing between cards
+                flex-wrap   = allows wrapping on smaller screens
+              */}
+              <div className="d-flex gap-4 flex-wrap">
+
+
+                {/* ============================================================= */}
+                {/* WARM LIGHTING OPTION                                          */}
+                {/* ============================================================= */}
+
+                <div
+
+                  /*
+                    If this option is selected:
+                    → add "selected-card" class
+                    → activates drop shadow styling
+                  */
+                  className={`image-selector-card ${
+                    lighting === "warm" ? "selected-card" : ""
+                  }`}
+
+                  /*
+                    When clicked:
+                    1. save lighting choice
+                    2. track interaction order
+                  */
+                  onClick={() => {
+
+                    setLighting("warm");
+
+                    addInteraction("lighting");
+
+                  }}
+                >
+
+                  {/* Lighting image */}
+                  <img
+                    src="/images/warm-lighting.jpg"
+                    alt="Warm Lighting"
+                    width={180}
+                  />
+
+                  {/* Caption text */}
+                  <p>Warm</p>
+
+                </div>
+
+
+                {/* ============================================================= */}
+                {/* COOL LIGHTING OPTION                                          */}
+                {/* ============================================================= */}
+
+                <div
+                  className={`image-selector-card ${
+                    lighting === "cool" ? "selected-card" : ""
+                  }`}
+                  onClick={() => {
+
+                    setLighting("cool");
+
+                    addInteraction("lighting");
+
+                  }}
+                >
+
+                  <img
+                    src="/images/cool-lighting.jpg"
+                    alt="Cool Lighting"
+                    width={180}
+                  />
+
+                  <p>Cool</p>
+
+                </div>
+
+
+                {/* ============================================================= */}
+                {/* ROMANTIC LIGHTING OPTION                                      */}
+                {/* ============================================================= */}
+
+                <div
+                  className={`image-selector-card ${
+                    lighting === "romantic" ? "selected-card" : ""
+                  }`}
+                  onClick={() => {
+
+                    setLighting("romantic");
+
+                    addInteraction("lighting");
+
+                  }}
+                >
+
+                  <img
+                    src="/images/romantic-lighting.jpg"
+                    alt="Romantic Lighting"
+                    width={180}
+                  />
+
+                  <p>Romantic</p>
+
+                </div>
+
+              </div>
+
             </Form.Group>
 
             <Form.Group className="mb-3">
@@ -193,9 +297,7 @@ function Register() {
               Register
             </Button>
           </Form>
-        </Card.Body>
-      </Card>
-    </Container>
+    </>
   );
 }
 

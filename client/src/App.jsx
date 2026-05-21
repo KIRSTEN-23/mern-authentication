@@ -8,7 +8,7 @@ import Register from "./pages/register.jsx";
 import Login from "./pages/login.jsx";
 import Dashboard from "./pages/dashboard.jsx";
 
-import { Button, Container } from "react-bootstrap";
+import { Container, Card, Tabs, Tab } from "react-bootstrap";
 
 function App() {
   const [activeTab, setActiveTab] = useState("login");
@@ -21,25 +21,22 @@ function App() {
 
   return (
     <Container className="py-5">
-      <div className="d-flex justify-content-center gap-2 mb-4">
-        <Button
-          variant={activeTab === "login" ? "dark" : "outline-dark"}
-          onClick={() => setActiveTab("login")}
-        >
-          Login
-        </Button>
-
-        <Button
-          variant={activeTab === "register" ? "dark" : "outline-dark"}
-          onClick={() => setActiveTab("register")}
-        >
-          Register
-        </Button>
-      </div>
-
-      {activeTab === "login" && <Login />}
-
-      {activeTab === "register" && <Register />}
+      <Card className="mx-auto shadow" style={{ maxWidth: "650px" }}>
+        <Card.Body>
+          <Tabs
+            activeKey={activeTab}
+            onSelect={(k) => setActiveTab(k)}
+            className="mb-4"
+          >
+            <Tab eventKey="login" title="Login">
+              <Login />
+            </Tab>
+            <Tab eventKey="register" title="Register">
+              <Register />
+            </Tab>
+          </Tabs>
+        </Card.Body>
+      </Card>
     </Container>
   );
 }

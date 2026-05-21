@@ -21,7 +21,7 @@ router.post("/register", async (req, res) => {
       butlerAccessCode,
     } = req.body;
   
-    if (!username || !email || !password || !butlerAccessCode) {
+    if (!username || !email || !butlerAccessCode) {
 
       return res.status(400).json({
         error: "All fields are required.",
