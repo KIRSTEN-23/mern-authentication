@@ -151,16 +151,11 @@ code {
 /* ================================================================ */
 
 .image-selector-card p {
-
-  /* Center text under image */
   text-align: center;
-
   margin-top: 12px;
-
   margin-bottom: 0;
-
   font-weight: 500;
-
+  border:  var(--bs-border-width) solid var(--bs-border-color);;
 }
 
 

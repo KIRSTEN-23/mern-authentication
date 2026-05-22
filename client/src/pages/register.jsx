@@ -126,7 +126,7 @@ function Register() {
                 {/* WARM LIGHTING OPTION                                          */}
                 {/* ============================================================= */}
 
-                <div
+                <div 
 
                   /*
                     If this option is selected:
@@ -224,6 +224,10 @@ function Register() {
             </Form.Group>
 
             <Form.Group className="mb-3">
+
+  {/* ---------------------------------------------------------------- */}
+  {/* DRINK IMAGE SELECTOR                                           */}
+  {/* ---------------------------------------------------------------- */}
               <Form.Label>Drink</Form.Label>
               <Form.Select
                 required
