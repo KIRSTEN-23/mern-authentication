@@ -123,7 +123,7 @@ If matched successfully:
 
 ## Project Structure
 
-mern-ecommerce-luxuryAccommodation/
+```mern-ecommerce-luxuryAccommodation/
 │
 ├── client/
 │   ├── src/
@@ -149,9 +149,9 @@ mern-ecommerce-luxuryAccommodation/
 │   ├── server.js
 │   └── package.json
 │
-└── README.md
+└── README.md```
 
-⸻
+---
 
 ## Installation
 
@@ -159,7 +159,7 @@ mern-ecommerce-luxuryAccommodation/
 
 git clone <repository-url>
 
-⸻
+---
 
 ## Backend Setup
 
@@ -190,7 +190,7 @@ Expected output:
 MongoDB Connected
 Server running at http://localhost:5000
 
-⸻
+---
 
 ## Frontend Setup
 
@@ -210,8 +210,7 @@ Expected output:
 
 http://localhost:5173
 
-⸻
-
+---
 ## MongoDB Atlas Setup
 
 Steps
@@ -223,7 +222,7 @@ Steps
 5. Copy connection string
 6. Add connection string to .env
 
-⸻
+---
 
 ## Authentication Flow
 
@@ -241,7 +240,7 @@ User opens Register tab → User creates suite setup → Suite configuration con
 User opens Login tab → User enters username → User recreates suite setup → Backend compares hashed Butler Access Code
 → JWT token issued → Dashboard access granted
 
-⸻
+---
 
 ## Butler’s Access Code
 
@@ -256,7 +255,7 @@ The Butler’s Access Code consists of:
 
 Example:
 
-{
+```{
   "lighting": "warm",
   "drink": "tea",
   "music": "jazz",
@@ -270,10 +269,11 @@ Example:
     "pillows"
   ]
 }
+```
 
 This object is converted into structured JSON and securely hashed before storage.
 
-⸻
+---
 
 ## Security
 
@@ -291,7 +291,7 @@ This ensures:
 * hashes cannot easily be reversed
 * authentication data is protected during database breaches
 
-⸻
+---
 
 ## JWT Authentication
 
@@ -305,7 +305,7 @@ Tokens are stored in:
 
 localStorage
 
-⸻
+---
 
 ## API Endpoints
 
@@ -313,7 +313,7 @@ localStorage
 
 POST /api/auth/register
 
-Example Body
+```Example Body
 
 {
   "username": "kirsten",
@@ -332,7 +332,7 @@ Example Body
       "pillows"
     ]
   }
-}
+}```
 
 #### Login
 
@@ -358,7 +358,7 @@ Example Body
   }
 }
 
-⸻
+---
 
 ## UI Components
 
@@ -388,7 +388,7 @@ Allows users to:
 * access authenticated content
 * logout
 
-⸻
+---
 
 ## Future Improvements
 
@@ -406,7 +406,7 @@ Potential future enhancements include:
 * multi-factor authentication
 * accommodation CRUD integration
 
-⸻
+---
 
 ## Learning Outcomes
 
@@ -444,7 +444,7 @@ This project demonstrates:
 * secure credential handling
 * behavioural authentication concepts
 
-⸻
+---
 
 ## Author
 
