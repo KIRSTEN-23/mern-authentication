@@ -100,7 +100,7 @@ function Login() {
 
       <Form onSubmit={handleLogin}>
             <Form.Group className="mb-3">
-              <Form.Label>Username</Form.Label>
+              <Form.Label>Username or Emailå</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter Username or Email"
