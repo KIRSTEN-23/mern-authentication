@@ -21,10 +21,10 @@ router.post("/register", async (req, res) => {
       butlerAccessCode,
     } = req.body;
   
-    if (!username || !email || !butlerAccessCode) {
+    if (!email || !password || !butlerAccessCode) {
 
       return res.status(400).json({
-        error: "All fields are required.",
+        error: "Please fill in all required fields.",
       });
 
     }
@@ -81,18 +81,18 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const {
-      username,
+      loginIdentifier,
       password,
       butlerAccessCode,
     } = req.body;
 
-    if (!username || !password || !butlerAccessCode) {
+    if (!loginIdentifier || !password || !butlerAccessCode) {
       return res.status(400).json({
-        message: "Please provide username, password and suite setup.",
+        message: "Please provide username or email, password and suite setup.",
       });
     }
 
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ $or: [{ email: loginIdentifier }, { username: loginIdentifier }] });
 
     if (!user) {
       return res.status(400).json({
@@ -134,7 +134,8 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign(
       {
         id: user._id,
-        username: user.username,
+        username: user.username || null,
+        email: user.email,
       },
       process.env.JWT_SECRET,
       {

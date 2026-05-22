@@ -70,7 +70,7 @@ h1,
 h2 {
   font-family: var(--heading);
   font-weight: 500;
-  color: var(--text-h);
+  color: #332A23;
 }
 
 h1 {
@@ -155,7 +155,7 @@ code {
   margin-top: 12px;
   margin-bottom: 0;
   font-weight: 500;
-  border:  var(--bs-border-width) solid var(--bs-border-color);;
+  border:  var(--bs-border-width) solid #ADAAAA;
 }
 
 
@@ -198,7 +198,7 @@ code {
 
 .nav-tabs .nav-link {
   border: none;
-  color: #999;
+  color: #ADAAAA;
   font-weight: 600;
   padding: 0.5rem 0;
   position: relative;
@@ -209,16 +209,14 @@ code {
   font-size: 14px;
 }
 
-.nav-tabs .nav-link:hover {
+.nav-tabs .nav-link:hover .nav-link.active{
   border-bottom-color: #ddd;
   color: var(--text);
-}
-
-.nav-tabs .nav-link.active {
   color: var(--text-h);
   border-bottom-color: var(--accent);
   background-color: transparent;
 }
+  
 
 .tab-content {
   padding-top: 2rem;

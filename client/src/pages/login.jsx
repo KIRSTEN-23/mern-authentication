@@ -3,7 +3,8 @@ import axios from "axios";
 import { Alert, Button, Form } from "react-bootstrap";
 
 function Login() {
-  const [username, setUsername] = useState("");
+  
+  const [loginIdentifier, setLoginIdentifier] = useState("");
   const [password, setPassword] = useState("");
 
   const [lighting, setLighting] = useState("");
@@ -15,9 +16,41 @@ function Login() {
   const [interactionOrder, setInteractionOrder] = useState([]);
   const [error, setError] = useState("");
 
-  const addInteraction = (actionName) => {
-    setInteractionOrder((currentOrder) => [...currentOrder, actionName]);
-  };
+  const updateInteraction = (actionName, isActive) => {
+
+  setInteractionOrder((currentOrder) => {
+
+    // =====================================================
+    // REMOVE interaction if deselected
+    // =====================================================
+
+    if (!isActive) {
+
+      return currentOrder.filter(
+        (item) => item !== actionName
+      );
+
+    }
+
+    // =====================================================
+    // Prevent duplicates
+    // =====================================================
+
+    if (currentOrder.includes(actionName)) {
+
+      return currentOrder;
+
+    }
+
+    // =====================================================
+    // Add new interaction to end of sequence
+    // =====================================================
+
+    return [...currentOrder, actionName];
+
+  });
+
+};
 
   const clearInteractionOrder = () => {
     setInteractionOrder([]);
@@ -41,7 +74,7 @@ function Login() {
       const response = await axios.post(
         "http://localhost:5000/api/auth/login",
         {
-          username,
+          loginIdentifier,
           password,
           butlerAccessCode,
         },
@@ -70,9 +103,10 @@ function Login() {
               <Form.Label>Username</Form.Label>
               <Form.Control
                 type="text"
+                placeholder="Enter Username or Email"
                 required
-                value={username}
-                onChange={(event) => setUsername(event.target.value)}
+                value={loginIdentifier}
+                onChange={(event) => setLoginIdentifier(event.target.value)}
               />
             </Form.Group>
 
@@ -97,7 +131,7 @@ function Login() {
                 value={lighting}
                 onChange={(event) => {
                   setLighting(event.target.value);
-                  addInteraction("lighting");
+                  updateInteraction("lighting", true);
                 }}
               >
                 <option value="">Choose lighting</option>
@@ -114,7 +148,7 @@ function Login() {
                 value={drink}
                 onChange={(event) => {
                   setDrink(event.target.value);
-                  addInteraction("drink");
+                  updateInteraction("drink", true);
                 }}
               >
                 <option value="">Choose drink</option>
@@ -155,30 +189,17 @@ function Login() {
 
             <Form.Group className="mb-3">
               <Form.Label>Pillows</Form.Label>
-
-              <div className="d-flex align-items-center">
-                <Button
-                  variant="outline-dark"
-                  onClick={() => {
-                    setPillows((current) => Math.max(1, current - 1));
-                    addInteraction("pillows");
-                  }}
-                >
-                  -
-                </Button>
-
-                <span className="mx-3 fs-5">{pillows}</span>
-
-                <Button
-                  variant="outline-dark"
-                  onClick={() => {
-                    setPillows((current) => current + 1);
-                    addInteraction("pillows");
-                  }}
-                >
-                  +
-                </Button>
-              </div>
+              <Form.Control
+                type="number"
+                min="1"
+                max="10"
+                required
+                value={pillows}
+                onChange={(event) => {
+                  setPillows(Number(event.target.value));
+                  addInteraction('pillows');
+                }}
+              />
             </Form.Group>
 
             <Alert variant="secondary">

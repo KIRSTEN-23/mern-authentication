@@ -18,8 +18,14 @@ function Register() {
   const [error, setError] = useState('');
 
   const addInteraction = (actionName) => {
-    setInteractionOrder((currentOrder) => [...currentOrder, actionName]);
-  };
+  setInteractionOrder((currentOrder) => {
+    if (currentOrder.includes(actionName)) {
+      return currentOrder;
+    }
+
+    return [...currentOrder, actionName];
+  });
+};
 
   const clearInteractionOrder = () => {
     setInteractionOrder([]);
