@@ -1,12 +1,12 @@
-# Butler’s Access Code Authentication System
+# $\color{blue}{\text{Butler’s Access Code Authentication System}}$
 
-## Overview
+## $\color{lightblue}{\text{Overview}}$
 
 This is an individual MERN stack authentication project exploring alternative behavioural authentication methods through an immersive luxury hotel interaction system.
 
 Instead of using a traditional password-based login system, this project introduces a creative authentication method called:
 
-##### “The Butler’s Access Code”
+### “The Butler’s Access Code”
 
 Users authenticate by recreating their personalised luxury hotel suite configuration.
 
@@ -20,7 +20,7 @@ The system combines:
 
 This transforms login from a traditional technical interaction into a luxury, immersive experience.
 
-⸻
+---
 
 ## Project Concept
 
@@ -62,7 +62,7 @@ If matched successfully:
 * a JWT token is issued
 * the user gains access to the dashboard
 
-⸻
+---
 
 ## Features
 
@@ -93,7 +93,7 @@ If matched successfully:
 * Axios frontend requests
 * Environment variable configuration
 
-⸻
+---
 
 ## Tech Stack
 
@@ -119,7 +119,7 @@ If matched successfully:
 * dotenv
 * cors
 
-⸻
+---
 
 ## Project Structure
 
@@ -149,13 +149,14 @@ If matched successfully:
 │   ├── server.js
 │   └── package.json
 │
-└── README.md```
+└── README.md
+```
 
 ---
 
 ## Installation
 
-1. Clone Repository
+#### Clone Repository
 
 git clone <repository-url>
 
@@ -165,7 +166,8 @@ git clone <repository-url>
 
 1. Navigate to server
 
-cd server
+```cd server
+```
 
 2. Install dependencies
 
@@ -332,7 +334,8 @@ POST /api/auth/register
       "pillows"
     ]
   }
-}```
+}
+```
 
 #### Login
 
@@ -340,7 +343,7 @@ POST /api/auth/login
 
 Example Body
 
-{
+```{
   "username": "kirsten",
   "butlerAccessCode": {
     "lighting": "warm",
@@ -357,6 +360,7 @@ Example Body
     ]
   }
 }
+```
 
 ---
 
