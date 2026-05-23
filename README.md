@@ -229,7 +229,7 @@ Steps
 ## Authentication Flow
 
 <p align="center">
-  <img src="./assets/UML.png" width="100%" />
+  <img src="/UML.png" width="100%" />
 </p>
 
 #### Registration Flow
