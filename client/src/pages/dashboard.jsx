@@ -27,7 +27,7 @@ function Dashboard() {
   }
 
   return (
-    <Container className="py-5">
+    <Container className="py-5 align-items-left">
       <Card className="p-4 shadow">
         <h1>Welcome to Deluxe Bookings</h1>
 
@@ -35,7 +35,7 @@ function Dashboard() {
           Logged in as: <strong>{user?.username}</strong>
         </p>
 
-        <p>Your JWT token has been saved in localStorage.</p>
+        <p className="py-2">Your JWT token has been saved in localStorage.</p>
 
         <Button variant="outline-danger" onClick={logout}>
           Logout

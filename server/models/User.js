@@ -17,6 +17,7 @@
 // Frontend Register.jsx sends user data → userRoutes.js processes it → User.js defines how it is stored.const mongoose = require("mongoose");
 
 // =================================================================================================
+const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema(
     {
