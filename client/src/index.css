@@ -1,86 +1,65 @@
+
+/* -------------------------------------------------------------------------------------------------
+ GLOBAL DESIGN VARIABLES
+------------------------------------------------------------------------------------------------- */
+
 :root {
   --text: #6b6375;
-  --text-h: #08060d;
+  --text-h: #332A23;
   --bg: #EFEBEA;
   --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --card-bg: #ffffff;
+  --muted: #ADAAAA;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
 
   font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
+/* -------------------------------------------------------------------------------------------------
+  PAGE RESET + ROOT LAYOUT
+------------------------------------------------------------------------------------------------- */
 
 body {
   margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
 }
 
 #root {
-  width: 1126px;
+  width: 100%;
   max-width: 100%;
+  min-height: 100vh;
   margin: 0 auto;
-  text-align: center;
   border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
   box-sizing: border-box;
 }
 
+
+/* -------------------------------------------------------------------------------------------------
+  TYPOGRAPHY
+------------------------------------------------------------------------------------------------- */
+
 h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: #332A23;
+h2,
+h5 {
+  font-family:'Times New Roman', Times, serif sans-serif;
+  color: var(--text-h);
 }
 
 h1 {
   font-size: 56px;
   letter-spacing: -1.68px;
   margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
 }
 
 h2 {
@@ -88,141 +67,277 @@ h2 {
   line-height: 118%;
   letter-spacing: -0.24px;
   margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
+  font-weight: 600;
 }
+
+h3{
+  color: #7B593F;
+  font-weight: 600;
+}
+
 p {
   margin: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+
+/* -------------------------------------------------------------------------------------------------
+   REACT BOOTSTRAP TAB OVERRIDES
+------------------------------------------------------------------------------------------------- */
+
+.nav-tabs {
+  border-bottom: none !important;
+  padding-bottom: 1rem;
+  justify-content: center;
+  border-radius: none !important;
+  --bs-border-radius: 0 !important;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.nav-tabs .nav-link {
+  border: none !important;
+  background-color: transparent !important;
+  color: var(--muted) !important;
+  font-weight: 600;
+  position: relative;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 20px;
+}
+
+.nav-tabs .nav-link:hover {
+  color: var(--text-h) !important;
+}
+
+.nav-tabs .nav-link.active {
+  color: #fff !important;
+  background-color: #332A23 !important;
+}
+
+/* .nav-tabs .nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 3px;
+  background-color: #332A23;
+} */
+
+.tab-content {
+  padding-bottom: 0;
+  padding: 0px 16px 16px;
+}
+
+.tab-pane {
+  padding: 0;
+}
+
+.header-img{
+  background-image: url("https://images.pexels.com/photos/7820326/pexels-photo-7820326.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 200px;
+}
+
+.header-img::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(51, 42, 35, 0.6);
+  height: 200px;
+}
+
+.header-img h2 {
+  position: relative;
+  z-index: 1;
+  color: white;
+  font-size: 36px;
+  text-align: center;
+}
+
+
+
+.form-control::placeholder {
+  color: #ADAAAA;
+  opacity: 1;
+}
+
+input{
+  padding: 10px 16px !important; 
+}
+
+/* -------------------------------------------------------------------------------------------------
+   STEP 5: IMAGE SELECTOR CARDS
+------------------------------------------------------------------------------------------------- */
+
+
+.image-selector-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
 }
 
 .image-selector-card {
-  width: 180px;
-
-  /* White polaroid-style background */
-  background: white;
-
-  /* Thin light grey border */
-  border: 1px solid #939292;
-
-  /* Rounded corners */
+  flex: 1 1 calc(33.333% - 1rem);
+  border: none;
   border-radius: 12px;
-
-  /* 
-    Bottom padding slightly larger
-    to create subtle polaroid feel
-  */
-  padding: 12px 12px 18px 12px;
-
-  /* Pointer cursor on hover */
+  padding: 10px 10px 16px 10px;
   cursor: pointer;
-
-  /* Smooth animation */
   transition: all 0.25s ease;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .image-selector-card img {
-  width: 180px;
+  width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
   border-radius: 8px;
-
 }
-
-
-/* ================================================================ */
-/* CAPTION TEXT                                                     */
-/* ================================================================ */
 
 .image-selector-card p {
   text-align: center;
   margin-top: 12px;
   margin-bottom: 0;
   font-weight: 500;
-  border:  var(--bs-border-width) solid #ADAAAA;
 }
-
-
-/* ================================================================ */
-/* HOVER EFFECT                                                     */
-/* ================================================================ */
 
 .image-selector-card:hover {
-
-  /* Slight lift effect */
-  transform: translateY(-2px);
-
+  border: #dee2e6 solid 1px;
+  /* transform: translateY(-4px); */
 }
-
-
-/* ================================================================ */
-/* SELECTED CARD STATE                                              */
-/* ================================================================ */
-
 .selected-card {
-
-  /* Remove border when selected */
-  border: none;
-
-  /* Add soft luxury-style shadow */
+  border-color: transparent;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-/* ================================================================ */
-/* TAB STYLING WITH UNDERLINE                                       */
-/* ================================================================ */
 
-.nav-tabs {
-  border-bottom: none;
-  display: flex;
-  gap: 2rem;
-  padding-bottom: 1rem;
-  justify-content: center;
+/* -------------------------------------------------------------------------------------------------
+   STEP 6: SMALL SCREEN RESPONSIVENESS
+------------------------------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  :root {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  #root {
+    border-inline: none;
+  }
+
+
 }
 
-.nav-tabs .nav-link {
-  border: none;
-  color: #ADAAAA;
-  font-weight: 600;
-  padding: 0.5rem 0;
-  position: relative;
-  border-bottom: 3px solid transparent;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 14px;
+
+.btn-dark {
+  --bs-btn-bg: #332A23;
+  --bs-btn-color: #fff;
 }
 
-.nav-tabs .nav-link:hover .nav-link.active{
-  border-bottom-color: #ddd;
-  color: var(--text);
-  color: var(--text-h);
-  border-bottom-color: var(--accent);
-  background-color: transparent;
-}
-  
-
-.tab-content {
-  padding-top: 2rem;
-  padding-bottom: 0;
+.btn-outline-secondary {
+    --bs-btn-color: #332A23;
+    --bs-btn-border-color: #332A23;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #332A23;
+    --bs-btn-hover-border-color: #fff;
 }
 
-.tab-pane {
-  padding: 0;
+.form-label {
+  font-size: 16px;
+}
+
+.alert-secondary{
+  --bs-alert-bg: #EFEBEA;
+  --bs-alert-color: #;
+  --bs-alert-border-color: none
+  --bs-alert-link-color: #332A23;
+}
+
+
+/* ===================================================== */
+
+/* CUSTOM BOOTSTRAP SWITCH                               */
+
+/* ===================================================== */
+
+.form-switch .form-check-input {
+
+  width: 3.2rem;
+
+  height: 1.7rem;
+
+  cursor: pointer;
+
+  align-items: center;
+
+}
+
+/* ===================================================== */
+
+/* OFF STATE                                             */
+
+/* ===================================================== */
+
+.form-switch .form-check-input {
+
+  background-color: #d8d8d8;
+
+  border-color: #d8d8d8;
+
+}
+
+/* ===================================================== */
+
+/* ON STATE                                              */
+
+/* ===================================================== */
+
+.form-switch .form-check-input:checked {
+
+  background-color: #332A23;
+
+  border-color: #332A23;
+
+}
+
+/* ===================================================== */
+
+/* REMOVE BOOTSTRAP BLUE GLOW                            */
+
+/* ===================================================== */
+
+.form-switch .form-check-input:focus {
+
+  box-shadow: none;
+
+  border-color: #332A23;
+
+}
+
+/* ===================================================== */
+
+/* LABEL STYLING                                         */
+
+/* ===================================================== */
+
+.form-switch .form-check-label {
+
+  margin-left: 0.5rem;
+
+  font-weight: 500;
+
 }

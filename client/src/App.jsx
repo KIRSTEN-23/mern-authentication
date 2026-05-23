@@ -20,22 +20,26 @@ function App() {
   }
 
   return (
-    <Container className="py-5">
-      <Card className="mx-auto shadow" style={{ maxWidth: "650px" }}>
-        <Card.Body>
+    <Container fluid className="py-5">
+      <Card className="mx-auto shadow" style={{ maxWidth: "850px" }}>
+        <div className="header-img d-flex justify-content-center align-items-center">
+          <h2 className="mb-2">
+            Butler's Access Code
+          </h2>
+        </div>
           <Tabs
             activeKey={activeTab}
             onSelect={(k) => setActiveTab(k)}
-            className="mb-4"
+            className="mb-3"
+            fill
           >
-            <Tab eventKey="login" title="Login">
+            <Tab eventKey="login" title="Login" tabClassName="w-100 text-center">
               <Login />
             </Tab>
-            <Tab eventKey="register" title="Register">
+            <Tab eventKey="register" title="Register" tabClassName="w-100 text-center">
               <Register />
             </Tab>
           </Tabs>
-        </Card.Body>
       </Card>
     </Container>
   );
