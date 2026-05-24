@@ -89,6 +89,14 @@ function Register() {
 
   const clearInteractionOrder = () => {
     setInteractionOrder([]);
+    setPassword("");
+    setEmail("");
+    setUsername("");
+    setLighting("");
+    setDrink("");
+    setMusic("");
+    setFireplace(false);
+    setPillows(1);
   };
 
   {/* ---------------------------------------------------------------------------*/}
@@ -231,10 +239,9 @@ function Register() {
             {/* -------------------------WARM-------------------------------*/}
             
             <div
-              className={`image-selector-card ${
-                lighting === "warm" ? "selected-card" : ""
-              }`}
-              onClick={() => {
+              className={`image-selector-card ${ lighting === "warm" ? "selected-card" : "" }`}
+              
+              onClick={() => { 
                 setLighting("warm");
                 handleInteraction("lighting", true);
               }}
@@ -247,9 +254,8 @@ function Register() {
             {/* -------------------------COOL-------------------------------*/}
             
             <div
-              className={`image-selector-card ${
-                lighting === "cool" ? "selected-card" : ""
-              }`}
+              className={`image-selector-card ${ lighting === "cool" ? "selected-card" : "" }`}
+              
               onClick={() => {
                 setLighting("cool");
                 handleInteraction("lighting", true);
@@ -262,9 +268,7 @@ function Register() {
             {/* -------------------------ROMANTIC---------------------------*/}
 
             <div
-              className={`image-selector-card ${
-                lighting === "romantic" ? "selected-card" : ""
-              }`}
+              className= {`image-selector-card ${ lighting === "romantic" ? "selected-card" : "" }`}
               onClick={() => {
                 setLighting("romantic");
                 handleInteraction("lighting", true);
@@ -289,9 +293,7 @@ function Register() {
 
           <div className="image-selector-grid">
             <div
-              className={`image-selector-card ${
-                drink === "tea" ? "selected-card" : ""
-              }`}
+              className={`image-selector-card ${ drink === "tea" ? "selected-card" : "" }`}
               onClick={() => {
                 setDrink("tea");
                 handleInteraction("drink", true);
@@ -319,9 +321,8 @@ function Register() {
             {/* ----------------------CHAMPAGNE------------------------------*/}
 
             <div
-              className={`image-selector-card ${
-                drink === "champagne" ? "selected-card" : ""
-              }`}
+              className={`image-selector-card ${ drink === "champagne" ? "selected-card" : "" }`}
+              
               onClick={() => {
                 setDrink("champagne");
                 handleInteraction("drink", true);
@@ -344,9 +345,7 @@ function Register() {
 
           <div className="d-flex gap-4 flex-wrap justify-content-center">
             <div
-              className={`image-selector-card ${
-                music === "jazz" ? "selected-card" : ""
-              }`}
+              className={`image-selector-card ${ music === "jazz" ? "selected-card" : "" }`}
               onClick={() => {
                 setMusic("jazz");
                 handleInteraction("music", true);
@@ -359,9 +358,8 @@ function Register() {
             {/* -------------------------CLASSICAL-------------------------------*/}
 
             <div
-              className={`image-selector-card ${
-                music === "classical" ? "selected-card" : ""
-              }`}
+              className={`image-selector-card ${ music === "classical" ? "selected-card" : "" }`}
+              
               onClick={() => {
                 setMusic("classical");
                 handleInteraction("music", true);
@@ -374,11 +372,10 @@ function Register() {
             {/* ---------------------------AMBIENT------------------------------*/}
 
             <div
-              className={`image-selector-card ${
-                music === "ambient" ? "selected-card" : ""
-              }`}
-              onClick={() => {
-                setMusic("ambient");
+              className={`image-selector-card ${ music === "ambient" ? "selected-card" : "" }`}
+              
+              onClick={() => { 
+                setMusic("ambient"); 
                 handleInteraction("music", true);
               }}
             >
@@ -393,10 +390,11 @@ function Register() {
         {/* ----------------------------------------------------------------*/}
 
 
-        <Form.Group className="mb-3">
+        <Form.Group className="fireplace mb-4 px-3 d-flex justify-content-between align-items-center">
+          <Form.Label>Fireplace</Form.Label>
+
           <Form.Check
             type="switch"
-            label="Fireplace on"
             checked={fireplace}
             onChange={(event) => {
               setFireplace(event.target.checked);

@@ -94,6 +94,14 @@ function Login() {
 
   const clearInteractionOrder = () => {
     setInteractionOrder([]);
+    
+    setPassword("");
+    setLoginIdentifier("");
+    setLighting("");
+    setDrink("");
+    setMusic("");
+    setFireplace(false);
+    setPillows(1);
   };
 
   // ---------------------------------------------------------------------------

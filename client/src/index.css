@@ -268,36 +268,23 @@ input{
 }
 
 
-/* ===================================================== */
 
-/* CUSTOM BOOTSTRAP SWITCH                               */
 
-/* ===================================================== */
+/* CUSTOM BOOTSTRAP SWITCH ----------------------------- */
 
 .form-switch .form-check-input {
-
   width: 3.2rem;
-
   height: 1.7rem;
-
   cursor: pointer;
-
   align-items: center;
-
 }
 
-/* ===================================================== */
-
-/* OFF STATE                                             */
-
-/* ===================================================== */
+/* OFF STATE-------------------------------------------- */
 
 .form-switch .form-check-input {
-
   background-color: #d8d8d8;
-
   border-color: #d8d8d8;
-
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23ffffff'/%3e%3c/svg%3e");
 }
 
 /* ===================================================== */
@@ -324,7 +311,7 @@ input{
 
   box-shadow: none;
 
-  border-color: #332A23;
+  border-color: transparent;
 
 }
 
